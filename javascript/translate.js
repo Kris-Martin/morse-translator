@@ -33,5 +33,7 @@ export function translate(input) {
         return translateToMorse(toTranslate);
     } else if (toTranslate.length > 0) {
         return translateToEnglish(toTranslate);
+    } else {
+        alert("Please enter message to translate.");
     }
 }

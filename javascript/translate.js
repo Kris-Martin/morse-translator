@@ -27,13 +27,22 @@ function isMorse(input) {
     return input.split("").every((char) => morseChars.includes(char));
 }
 
+function isValid(input) {
+    const validChars = Object.keys(morseDict);
+    return input
+        .split("")
+        .every((char) => validChars.includes(char.toUpperCase()));
+}
+
 export function translate(input) {
     let toTranslate = input.trim();
-    if (toTranslate.length > 0 && !isMorse(toTranslate)) {
+    if (!isValid(input)) {
+        return "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ \" $ @, ' ']";
+    } else if (toTranslate.length > 0 && !isMorse(toTranslate)) {
         return translateToMorse(toTranslate);
     } else if (toTranslate.length > 0) {
         return translateToEnglish(toTranslate);
     } else {
-        alert("Please enter message to translate.");
+        return "Please enter a message to translate.";
     }
 }

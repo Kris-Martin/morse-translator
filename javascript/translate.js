@@ -37,7 +37,7 @@ function isValid(input) {
 export function translate(input) {
     let toTranslate = input.trim();
     if (!isValid(input)) {
-        return "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ \" $ @, ' ']";
+        return "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ ' \" $ @, ' ']";
     } else if (toTranslate.length > 0 && !isMorse(toTranslate)) {
         return translateToMorse(toTranslate);
     } else if (toTranslate.length > 0) {

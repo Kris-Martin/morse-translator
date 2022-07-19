@@ -8,7 +8,7 @@ function translateToMorse(str) {
             result += morseDict[key] + " ";
         }
     }
-    return result;
+    return result.trim();
 }
 
 function translateToEnglish(str) {
@@ -19,30 +19,35 @@ function translateToEnglish(str) {
             result += englishDict[char];
         }
     }
-    return result;
+    return result.trim();
 }
 
-function isMorse(input) {
-    const morseChars = ["-", ".", "/", " "];
-    return input.split("").every((char) => morseChars.includes(char));
+export function isMorse(input) {
+    const validMorseChars = Object.values(morseDict);
+    return input.split(" ").every((char) => validMorseChars.includes(char));
 }
 
-function isValid(input) {
+export function isValid(input) {
+    const morseChars = [".", "-", "/", " "];
     const validChars = Object.keys(morseDict);
-    return input
+    const allValid = input
         .split("")
         .every((char) => validChars.includes(char.toUpperCase()));
+    const isMorseSymbolsOnly = input
+        .split("")
+        .every((char) => morseChars.includes(char.toUpperCase()));
+    return allValid && !isMorseSymbolsOnly;
 }
 
 export function translate(input) {
-    let toTranslate = input.trim();
-    if (!isValid(input)) {
-        return "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ ' \" $ @, ' ']";
-    } else if (toTranslate.length > 0 && !isMorse(toTranslate)) {
-        return translateToMorse(toTranslate);
-    } else if (toTranslate.length > 0) {
-        return translateToEnglish(toTranslate);
-    } else {
+    let toTranslate = input ? input.trim() : "";
+    if (toTranslate.length < 1) {
         return "Please enter a message to translate.";
+    } else if (isMorse(toTranslate)) {
+        return translateToEnglish(toTranslate);
+    } else if (isValid(input) && !isMorse(input)) {
+        return translateToMorse(toTranslate);
+    } else {
+        return "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ ' \" $ @, ' ']";
     }
 }

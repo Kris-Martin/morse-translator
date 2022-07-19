@@ -47,6 +47,7 @@ The User Interface will have to look good but should remain simple (additional f
    "S": "...",
    "T": "-",
    "U": "..-",
+   "V": "...-",
    "W": ".--",
    "X": "-..-",
    "Y": "-.--",

@@ -40,14 +40,19 @@ export function isValid(input) {
 }
 
 export function translate(input) {
+    const emptyInputMsg = "Please enter a message to translate.";
+    const invalidCharMsg =
+        "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ ' \" $ @, ' ']";
+
     let toTranslate = input ? input.trim() : "";
+
     if (toTranslate.length < 1) {
-        return "Please enter a message to translate.";
+        return emptyInputMsg;
     } else if (isMorse(toTranslate)) {
         return translateToEnglish(toTranslate);
     } else if (isValid(input) && !isMorse(input)) {
         return translateToMorse(toTranslate);
     } else {
-        return "Please enter either morse: ['.', '-', ' ', '/'] or text: [a-z, A-Z, 0-9, . , ? ! / ( ) & : ; = + - _ ' \" $ @, ' ']";
+        return invalidCharMsg;
     }
 }

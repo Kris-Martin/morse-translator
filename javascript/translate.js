@@ -50,7 +50,7 @@ export function translate(input) {
         return emptyInputMsg;
     } else if (isMorse(toTranslate)) {
         return translateToEnglish(toTranslate);
-    } else if (isValid(input) && !isMorse(input)) {
+    } else if (isValid(input)) {
         return translateToMorse(toTranslate);
     } else {
         return invalidCharMsg;

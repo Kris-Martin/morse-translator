@@ -1,11 +1,26 @@
 # Morse Code Translator
 
-## Outline
+## Description
 
-This task will require you to create a web page Morse Code translator.
-The User Interface will have to look good but should remain simple (additional features, ie. sounds, lights, etc, should only be added once the MVP has been completed.)
+A simple web app using HTML, SCSS and Javascript to translate English to Morse Code or Morse Code to English.
 
-## MVP
+You can test the app here:
+
+https://kris-martin.github.io/morse-translator/
+
+![Morse Code App UI](./morse-code-ui.png)
+
+## Features
+
+-   Detects if input is English or Morse and then translates and outputs result
+-   Detects if input is valid Morse or uses invalid characters
+-   Shows user error messages if empty input or invalid characters
+
+## Project Brief
+
+Create a web page Morse Code translator. The User Interface should be simple.
+
+### MVP
 
 -   Create a user interface that allows the user to either input some English text or some Morse Code
 -   Create JS functions that would allow the user to:
@@ -15,13 +30,6 @@ The User Interface will have to look good but should remain simple (additional f
 
 -   Make sure to handle spaces properly (ie. there is 1 space between English words, but one space between Morse Code characters)
 -   Make sure to keep your pure functions separated from the JS DOM interaction code.
-
-## Useful Resources:
-
--   [Iterate Object in JavaScript](https://www.javascripttutorial.net/object/iterate-object-in-javascript/)
--   [Looping through objects keys and values in Javascript?](https://flexiple.com/loop-through-object-javascript/)
-
-###
 
 ```js
 // A to Z in Morse Code
